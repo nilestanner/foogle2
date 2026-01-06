@@ -387,7 +387,8 @@ function submitWord() {
     return;
   }
 
-  if (state.dictionary.has(word)) {
+  // Check dictionary (normalize to uppercase to handle "Qu")
+  if (state.dictionary.has(word.toUpperCase())) {
     state.foundWords.add(word);
     const pts = calculateScore(word);
     state.score += pts;
