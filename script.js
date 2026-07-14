@@ -465,3 +465,7 @@ renderBoard = function () {
 
 // Start
 init();
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { formatTime };
+}
