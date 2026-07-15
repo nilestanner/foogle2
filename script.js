@@ -464,8 +464,10 @@ renderBoard = function () {
 };
 
 // Start
-init();
+if (typeof process === 'undefined' || process.env.NODE_ENV !== 'test') {
+  init();
+}
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { formatTime };
+  module.exports = { formatTime, isAdjacent };
 }
