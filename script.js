@@ -383,23 +383,19 @@ function submitWord() {
 
   if (state.foundWords.has(word)) {
     showToast("Already found!", "error");
-    resetSelection();
-    return;
-  }
-
-  // Check dictionary (normalize to uppercase to handle "Qu")
-  if (state.dictionary.has(word.toUpperCase())) {
+  } else if (state.dictionary.has(word.toUpperCase())) {
+    // Check dictionary (normalize to uppercase to handle "Qu")
     state.foundWords.add(word);
     const pts = calculateScore(word);
     state.score += pts;
     updateScoreDisplay();
     addWordToFoundList(word, pts);
     showToast(`+${pts} Points!`, 'success');
-    resetSelection();
   } else {
     showToast("Not in dictionary", "error");
-    resetSelection();
   }
+
+  resetSelection();
 }
 
 function calculateScore(word) {
